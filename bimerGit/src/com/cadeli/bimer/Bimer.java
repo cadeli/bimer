@@ -86,12 +86,18 @@ public class Bimer {
 	 * Exemple d'utilisation 'normale'
 	**/
 	private static void command_bimString(String txt) {
-		// fix simple mode
+		
+		
+		// initialisation obligatoire
 		load_dico_excude();
 		initFixMode();
 		tuneFixMode();
+		
+		// lance la detection des fautes
 		decoupe(txt, PROCESSMODE_BIM, false);
 
+		
+		// exemple d'affichage des erreurs
 		if (errors > 0) {
 			System.out.println("" + errors + " error in : " + txt);
 		}
