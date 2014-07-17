@@ -56,34 +56,21 @@ import java.util.Locale;
 
 public class Bimer {
 	
-	private static String VERSION_NUM = "0.1";
 
 	private static final String LEARN_DATA_ER_STATS_TXT = "learn_data/er_stats.txt";
-	private static final int PROCESSMODE_LEARN = 10;
-	private static final int PROCESSMODE_BIM = 20;
-	private static final int PROCESSMODE_LOADEXCLUDE = 30;
-	private static final int PROCESSMODE_READ_STAT_ER = 40;
+	public static final int PROCESSMODE_LEARN = 10;
+	public static final int PROCESSMODE_BIM = 20;
+	public static final int PROCESSMODE_LOADEXCLUDE = 30;
+	public static final int PROCESSMODE_READ_STAT_ER = 40;
 
 	private static int fixable;
 	private static int detected;
 	private static int numLigne;
 	private static int errors;
 
-	public static void main(String[] args) {
-		System.out.println("Bimer start version = "+ VERSION_NUM);
-
-		// Command_learn();
-		// Command_bimFile();
-
-	    String txt = "ceci est un test que j'ai foirer, ça permet d'envoyé des trucs ";
-		command_bimString(txt);
-
-		//
-		System.out.println("Bimer end");
-	}
 
 	/**
-	 * Exemple d'utilisation 'normale'
+	 * Exemple d'utilisation 'normale' dans txt, le message à vérifier
 	**/
 	private static void command_bimString(String txt) {
 		
@@ -137,6 +124,12 @@ public class Bimer {
 		System.out.println("result:");
 		DicoPre.save(LEARN_DATA_ER_STATS_TXT);
 		DicoPre.display(8);
+	}
+	
+	public static void bimerInit() {
+		load_dico_excude();
+		initFixMode();
+		tuneFixMode();
 	}
 
 	private static void report() {
